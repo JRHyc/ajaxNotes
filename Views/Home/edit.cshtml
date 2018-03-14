@@ -1,0 +1,31 @@
+<body>
+
+    <h3>Edit your note below.</h3>
+    <br><br><br><br>
+    @foreach(var note in ViewBag.edit)
+    {
+        // <h4>@note["Title"]</h4>
+        //     <h5>@note["Description"]</h5>
+        //     <h6>@note["created_at"]</h6>
+
+    <form action="/update/@note["id"]" method="POST">
+        <label>Edit Title</label><br>
+        <input type="text" name="title" value='@note["Title"]'><br>
+        <label>Edit Description</label><br>
+        <textarea rows="4" cols="50" name="description">@note["Description"]</textarea><br>
+        <input type="submit" value="Update">
+        <button><a href='/delete/@note["id"]'>Delete</a></button>
+        <button><a href="/">Go Home</a></button>
+    </form>
+
+    }
+
+
+
+
+
+
+
+
+</body>
+

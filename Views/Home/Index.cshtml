@@ -1,5 +1,32 @@
 @{
     ViewData["Title"] = "Home Page";
 }
-<h1>Default Blank Page~</h1>
-<p>Get to adding stuff</p>
+<body>
+    <h1>Posted Notes</h1>
+    <p>Get to adding stuff.</p>
+
+
+
+    <form action="postNote" method="POST">
+        <label>Title:</label><br>
+        <input type="text" name="title"><br>
+        <label>Description:</label><br>
+        <textarea rows="4" cols="50" name="description"></textarea><br>
+        <button>Add Note!</button>
+    </form>
+    @{
+        @foreach(var note in ViewBag.notes)
+        {
+            <h4>@note["Title"]</h4>
+            <h5>@note["Description"]</h5>
+            <h6>Created on: @note["created_at"]</h6>
+            <h6>Updated at: @note["updated_at"]</h6>
+            <button><a href='edit/@note["id"]'>Edit</a></button>
+            <button><a href='delete/@note["id"]'>Delete</a></button>
+        }  
+    }
+    
+
+
+
+</body>
